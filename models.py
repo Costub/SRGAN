@@ -4,12 +4,10 @@ from torchsummary import summary
 
 
 class res_block(nn.Module):
-
   def __init__(self):
     super(res_block,self).__init__()
 
     self.block = nn.Sequential(
-
         nn.Conv2d(64, 64, kernel_size=3, padding=1, stride=1),
         nn.BatchNorm2d(64),
         nn.PReLU(),
@@ -24,7 +22,6 @@ class res_block(nn.Module):
 
 
 class generator(nn.Module):
-
   def __init__(self,b=16):
     super(generator,self).__init__()
 
@@ -37,7 +34,6 @@ class generator(nn.Module):
     self.res = nn.Sequential(*resblock)
 
     self.gen2=  nn.Sequential(
-        
         nn.Conv2d(64,256,kernel_size=3,stride=1,padding=1),
         nn.PixelShuffle(2),
         nn.PReLU(),
@@ -57,14 +53,12 @@ class generator(nn.Module):
 
 
 class discriminator(nn.Module):
-
   def __init__(self, im_shape=256):
     super(discriminator, self).__init__()
 
     x = int(im_shape*im_shape*2)
 
     self.disc = nn.Sequential(
-
             nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1),
             nn.LeakyReLU(0.2),
 
@@ -103,7 +97,6 @@ class discriminator(nn.Module):
 
             nn.Linear(1024, 1),
             nn.Sigmoid()
-
         )
 
   def forward(self, x):
