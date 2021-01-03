@@ -3,8 +3,6 @@ from torch import nn
 from torchsummary import summary
 
 
-
-
 class res_block(nn.Module):
 
   def __init__(self):
@@ -23,8 +21,6 @@ class res_block(nn.Module):
   
   def forward(self,x):
     return ( self.block(x) + x )
-
-
 
 
 class generator(nn.Module):
@@ -58,8 +54,6 @@ class generator(nn.Module):
     x = self.res(x)
     x = self.gen2(x)
     return x
-
-
 
 
 class discriminator(nn.Module):
