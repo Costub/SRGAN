@@ -48,7 +48,7 @@ for epoch in range(epochs):
         #train generator
 
         m_loss = mse_loss(gen_loss,hr)
-        v_loss = vgg_loss(vgg.features[:7](gen_out),vgg.features[:7](hr)
+        v_loss = vgg_loss(vgg.features[:7](gen_out),vgg.features[:7](hr))
         g_loss = gen_loss(f_label,torch.ones_like(f_label))
 
         generator_loss = g_loss + v_loss + m_loss
